@@ -1,0 +1,5 @@
+metaphor-python
+unidecode
+beautifulsoup4
+requests
+python-dotenv
