@@ -20,7 +20,8 @@ headers = {
 def chat(prompt):
     # Set up the data to send with the POST request
     data = {
-        "model": "gpt-3.5-turbo",
+        "model": "gpt-3.5-turbo-16k",
+        "max_tokens": 8192,
         "messages": [
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt}
@@ -60,9 +61,9 @@ def summarize_destination(destination, contents):
 
 def create_plan(destination, summarized_destinations, num_days):
     destionation_details = ".".join(summarized_destinations)
-    prompt = f"Help me plan a vacation to {destination} for {num_days} with the following attractions and their description. \
-                For each of the attraction, only write one or two sentences about what is special about them. \
-                Here is the summarized target attraction details: {destionation_details}"
+    prompt = f"Help me plan a vacation to {destination} for {num_days} with some of the attractions and their description, \
+                and give me the schedule for {num_days} days. Write maximum of 1200 words, \
+                but less than that is preferred. Here is the summarized target attraction details: {destionation_details}"
     
     # Tokenize the string.
     tokens = nltk.word_tokenize(prompt)
