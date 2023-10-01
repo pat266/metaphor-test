@@ -20,8 +20,7 @@ def strip_html_tags(content: str) -> str:
 
 def main():
     # Initialize the API client
-    # api_key = input("Enter your Metaphor API key: ")
-    metaphor_api = Metaphor("7fd1f87f-4e8a-4510-b695-6f2723cbb261")
+    metaphor_api = Metaphor(os.getenv('METAPHORAI_API_KEY'))
     
     # 1. Create a dictionary to store the contents of each destination
     destination_data = {}
